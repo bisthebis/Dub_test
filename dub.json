@@ -1,0 +1,9 @@
+{
+	"name": "test_dub",
+	"authors": [
+		"boris"
+	],
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2016, boris",
+	"license": "Do what the fuck you want license"
+}
