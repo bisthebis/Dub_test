@@ -1,5 +1,6 @@
 import derelict.sdl2.sdl;
 import color_utils;
+import texture;
 import std.stdio;
 
 class Window {
@@ -8,6 +9,7 @@ class Window {
     SDL_Renderer* renderer;
     SDL_Texture* texture;
     uint[] pixels;
+    Texture text;
 
     public:
     this()
@@ -27,10 +29,11 @@ class Window {
                                     SDL_TEXTUREACCESS_STATIC, 
                                     640, 
                                     480);
-
+        text = new Texture(renderer, 640, 480);
 
         //Creating texture...
         pixels = new uint[640*480];
+        text.data = pixels;
         for (uint y = 0; y < 480; ++y)
         {
             for (uint x = 0; x < 640; x++)
@@ -46,12 +49,14 @@ class Window {
         }
 
         //Sending it to GPU
+        text.update();
         SDL_UpdateTexture(texture, null, pixels.ptr, 640*4);
 
     }
 
     ~this()
     {
+        text.destroy();
         SDL_DestroyTexture(texture);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -62,7 +67,7 @@ class Window {
     {
         SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
 		SDL_RenderClear(renderer);	
-        SDL_RenderCopy(renderer, texture, null, null);
+        SDL_RenderCopy(renderer, text.getTextureHandle(), null, null);
 		SDL_RenderPresent(renderer);
     }
 
