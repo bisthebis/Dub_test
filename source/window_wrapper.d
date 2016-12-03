@@ -1,14 +1,15 @@
 import derelict.sdl2.sdl;
 import color_utils;
 import texture;
+import bitmap;
 import std.stdio;
 
 class Window {
     private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    Bitmap bitmap;
     Texture text;
-    uint[] pixels;
 
     static const uint WIDTH = 600;
     static const uint HEIGHT = 450;
@@ -27,10 +28,10 @@ class Window {
                                     -1, 
                                     SDL_RENDERER_ACCELERATED);
         text = new Texture(renderer, WIDTH, HEIGHT);
+        bitmap = Bitmap (WIDTH, HEIGHT);
 
         //Creating texture...
-        pixels = new uint[WIDTH*HEIGHT];
-        text.data = pixels;
+        text.data = bitmap.pixels;
         for (uint y = 0; y < HEIGHT; ++y)
         {
             for (uint x = 0; x < WIDTH; x++)
@@ -41,7 +42,7 @@ class Window {
                 const ubyte green = cast(ubyte) (y/2);
                 const ubyte blue = 128;
                 const uint color = (red << 24) + (green << 16) + (blue << 8) + alpha;
-                pixels[i] = getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888);
+                bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
             }
         }
 
