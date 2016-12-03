@@ -5,6 +5,8 @@ class Window {
     private:
     SDL_Window* window;
     SDL_Renderer* renderer;
+    int x = 50;
+    int y = 50;
 
     public:
     this()
@@ -23,9 +25,22 @@ class Window {
 
     void render()
     {
+        SDL_Rect rect;
+        rect.x = x;
+        rect.y = y;
+        rect.w = 100;
+        rect.h = 100;
         SDL_SetRenderDrawColor(renderer, 0, 128, 255, 255);
 		SDL_RenderClear(renderer);	
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        SDL_RenderFillRect(renderer, &rect);
 		SDL_RenderPresent(renderer);
+    }
+
+    void move(int x, int y)
+    {
+        this.x += x;
+        this.y += y;
     }
 
     SDL_Event getEvent() {

@@ -20,7 +20,30 @@ void main()
 		{
 			auto event = window.getEvent();
 			if (event.type == SDL_QUIT)
+			{
 				leave = true;
+			}
+			else if (event.type == SDL_KEYDOWN)
+			{
+				switch (event.key.keysym.sym)
+				{
+					case SDLK_UP:
+						window.move(0, -2);
+						break;
+					case SDLK_DOWN:
+						window.move(0, 2);
+						break;
+					case SDLK_RIGHT:
+						window.move(2, 0);
+						break;
+					case SDLK_LEFT:
+						window.move(-2, 0);
+						break;
+					default:
+						break;
+				}
+			}
+
 
 			window.render();
 		}
