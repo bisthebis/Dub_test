@@ -28,16 +28,12 @@ void main()
 				switch (event.key.keysym.sym)
 				{
 					case SDLK_UP:
-						window.move(0, -2);
 						break;
 					case SDLK_DOWN:
-						window.move(0, 2);
 						break;
 					case SDLK_RIGHT:
-						window.move(2, 0);
 						break;
 					case SDLK_LEFT:
-						window.move(-2, 0);
 						break;
 					case SDLK_ESCAPE:
 						leave = true;
