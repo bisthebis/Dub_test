@@ -28,7 +28,7 @@ class Window {
                                     -1, 
                                     SDL_RENDERER_ACCELERATED);
         text = new Texture(renderer, WIDTH, HEIGHT);
-        bitmap = Bitmap (WIDTH, HEIGHT);
+        bitmap = Bitmap (WIDTH, HEIGHT); //Since Bitmap is a struct, no "new" invocation is required.
 
         //Creating texture...
         text.data = bitmap.pixels;
