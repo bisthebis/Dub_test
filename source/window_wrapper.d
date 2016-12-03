@@ -11,8 +11,8 @@ class Window {
     Bitmap bitmap;
     Texture text;
 
-    static const uint WIDTH = 600;
-    static const uint HEIGHT = 450;
+    static const uint WIDTH = 729;
+    static const uint HEIGHT = 729;
 
     public:
     this()
@@ -39,7 +39,7 @@ class Window {
                 const uint i = x + WIDTH * y;
                 const ubyte alpha = 255;
                 const ubyte red = cast(ubyte) (x/3);
-                const ubyte green = cast(ubyte) (y/2);
+                const ubyte green = cast(ubyte) (y/3);
                 const ubyte blue = 128;
                 const uint color = (red << 24) + (green << 16) + (blue << 8) + alpha;
                 bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
