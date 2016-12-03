@@ -39,6 +39,9 @@ void main()
 					case SDLK_LEFT:
 						window.move(-2, 0);
 						break;
+					case SDLK_ESCAPE:
+						leave = true;
+						break;
 					default:
 						break;
 				}

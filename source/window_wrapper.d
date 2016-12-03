@@ -9,7 +9,7 @@ class Window {
     SDL_Texture* texture;
     int x = 50;
     int y = 50;
-    uint[640*480] pixels;
+    uint[] pixels;
 
     public:
     this()
@@ -32,6 +32,7 @@ class Window {
 
 
         //Creating texture...
+        pixels = new uint[640*480];
         for (uint y = 0; y < 480; ++y)
         {
             for (uint x = 0; x < 640; x++)
