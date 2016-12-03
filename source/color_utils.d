@@ -17,3 +17,15 @@ body {
             return 0; 
     }
 }
+
+
+unittest {
+    assert (getColorCode(
+        0, 
+        128, 
+        255, 
+        255, 
+        SDL_PIXELFORMAT_RGBA8888) 
+        == 0x0080FFFF
+        );
+}
