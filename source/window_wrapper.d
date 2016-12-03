@@ -7,9 +7,11 @@ class Window {
     private:
     SDL_Window* window;
     SDL_Renderer* renderer;
-    SDL_Texture* texture;
-    uint[] pixels;
     Texture text;
+    uint[] pixels;
+
+    static const uint WIDTH = 600;
+    static const uint HEIGHT = 450;
 
     public:
     this()
@@ -18,27 +20,22 @@ class Window {
         window = SDL_CreateWindow("My SDL Window", 
                                 SDL_WINDOWPOS_UNDEFINED, 
                                 SDL_WINDOWPOS_UNDEFINED, 
-                                640, 
-                                480, 
+                                WIDTH, 
+                                HEIGHT, 
                                 SDL_WINDOW_SHOWN);
         renderer = SDL_CreateRenderer(window, 
                                     -1, 
                                     SDL_RENDERER_ACCELERATED);
-        texture = SDL_CreateTexture(renderer, 
-                                    SDL_PIXELFORMAT_RGBA8888, 
-                                    SDL_TEXTUREACCESS_STATIC, 
-                                    640, 
-                                    480);
-        text = new Texture(renderer, 640, 480);
+        text = new Texture(renderer, WIDTH, HEIGHT);
 
         //Creating texture...
-        pixels = new uint[640*480];
+        pixels = new uint[WIDTH*HEIGHT];
         text.data = pixels;
-        for (uint y = 0; y < 480; ++y)
+        for (uint y = 0; y < HEIGHT; ++y)
         {
-            for (uint x = 0; x < 640; x++)
+            for (uint x = 0; x < WIDTH; x++)
             {
-                const uint i = x + 640 * y;
+                const uint i = x + WIDTH * y;
                 const ubyte alpha = 255;
                 const ubyte red = cast(ubyte) (x/3);
                 const ubyte green = cast(ubyte) (y/2);
@@ -50,14 +47,12 @@ class Window {
 
         //Sending it to GPU
         text.update();
-        SDL_UpdateTexture(texture, null, pixels.ptr, 640*4);
 
     }
 
     ~this()
     {
         text.destroy();
-        SDL_DestroyTexture(texture);
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         writefln("Destroying window");
