@@ -56,8 +56,8 @@ body {
 
 unittest {
     auto color = getColorFromCode(0x80FF00FF, SDL_PIXELFORMAT_RGBA8888);
-    //assert (color.r == 128);
-    //assert (color.g == 255);
-    //assert (color.b == 0);
+    assert (color.r == 128);
+    assert (color.g == 255);
+    assert (color.b == 0);
     assert (color.a == 255);
 }
