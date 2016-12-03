@@ -1,7 +1,7 @@
 import derelict.sdl2.sdl;
 import color_utils;
 
-class Bitmap
+struct Bitmap
 {
     const uint width;
     const uint height;
