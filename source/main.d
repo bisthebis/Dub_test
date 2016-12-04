@@ -18,7 +18,7 @@ void main()
 		bool leave = false;
 		while (!leave)
 		{
-			auto event = window.getEvent();
+			const auto event = window.getEvent();
 			if (event.type == SDL_QUIT)
 			{
 				leave = true;
