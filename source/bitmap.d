@@ -51,7 +51,7 @@ struct Bitmap
 
 unittest
 {
-    BitmapTexture text = new BitmapTexture(10, 10);
+    Bitmap text = Bitmap(10, 10);
     assert (text.getColor(5, 5) == 0xFFFFFFFF);
     auto color = getColorCode(0, 255, 128, 255, SDL_PIXELFORMAT_RGBA8888);
     text.setColor(5, 5, color); 

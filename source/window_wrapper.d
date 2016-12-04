@@ -2,6 +2,7 @@ import derelict.sdl2.sdl;
 import color_utils;
 import texture;
 import bitmap;
+import sierpinski_carpet;
 import std.stdio;
 
 class Window {
@@ -41,10 +42,11 @@ class Window {
                 const ubyte red = cast(ubyte) (x/3);
                 const ubyte green = cast(ubyte) (y/3);
                 const ubyte blue = 128;
-                const uint color = (red << 24) + (green << 16) + (blue << 8) + alpha;
                 bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
             }
         }
+        sierpinskiPrepare(bitmap, 243);
+        sierpinskiStep(bitmap, 243);
 
         //Sending it to GPU
         text.update();

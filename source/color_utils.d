@@ -1,7 +1,7 @@
 import derelict.sdl2.sdl;
 import std.stdio;
 
-uint getColorCode (ubyte r, ubyte g, ubyte b, ubyte a, uint type)
+uint getColorCode (ubyte r, ubyte g, ubyte b, ubyte a, uint type = SDL_PIXELFORMAT_RGBA8888)
 in {
     assert (type == SDL_PIXELFORMAT_RGBA8888 || type == SDL_PIXELFORMAT_ARGB8888);
 }
