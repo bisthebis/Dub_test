@@ -1,7 +1,7 @@
 import bitmap;
 import color_utils;
 
-bool isPowerOfThree(uint x)
+private bool isPowerOfThree(uint x)
 {
     if (x == 0 || x == 3)
         return true;
@@ -17,7 +17,7 @@ unittest
     assert(!isPowerOfThree(728));
 }
 
-void sierpinskiPrepare(ref Bitmap bitmap, uint size)
+private void sierpinskiPrepare(ref Bitmap bitmap, uint size)
 in {
    assert (bitmap.width >= size);
    assert (bitmap.height >= size);
@@ -54,7 +54,7 @@ body {
     }
 }
 
-void sierpinskiStep(ref Bitmap bitmap, uint xOrigin, uint yOrigin, uint size)
+private void sierpinskiStep(ref Bitmap bitmap, uint xOrigin, uint yOrigin, uint size)
 in {
     assert (size % 3 == 0);
 }
