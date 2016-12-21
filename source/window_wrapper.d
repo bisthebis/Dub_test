@@ -41,12 +41,12 @@ class Window {
                 const ubyte alpha = 255;
                 const ubyte red = cast(ubyte) (x/3);
                 const ubyte green = cast(ubyte) (y/3);
-                const ubyte blue = 128;
+                const ubyte blue = 255;
                 bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
             }
         }
-        sierpinskiPrepare(bitmap, 243);
-        sierpinskiStep(bitmap, 243);
+        sierpinskiDo(bitmap, 729, 2);
+        //sierpinskiStep(bitmap, 243);
 
         //Sending it to GPU
         text.update();
