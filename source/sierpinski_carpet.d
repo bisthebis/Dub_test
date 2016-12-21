@@ -1,23 +1,29 @@
 import bitmap;
 import color_utils;
+import std.math;
 
 void sierpinskiDo(ref Bitmap bitmap, uint size, uint steps)
 in {
     assert (steps > 0);
+    assert (pow(3, steps) <= size);
 }
 body {
     sierpinskiPrepare(bitmap, size);
-    sierpinskiStep(bitmap, 0, 0, size);
-    if (steps > 1)
-    {
-        for (int j = 0; j < 3; ++j)
+    uint currentStep = 1;
+    uint sizeRatio = 1;
+
+    do {
+        for (uint j = 0; j < sizeRatio; ++j)
         {
-            for (int i = 0; i < 3; ++i)
+            for (uint i = 0; i < sizeRatio; ++i)
             {
-                sierpinskiStep(bitmap, 0 + i*size / 3, 0 + j*size / 3, size/3);
+                sierpinskiStep(bitmap, i * (size / sizeRatio), j * (size / sizeRatio), size / sizeRatio);
             }
         }
-    }
+
+        currentStep++;
+        sizeRatio *= 3;
+    } while (currentStep <= steps);
 }
 
 private bool isPowerOfThree(uint x)
