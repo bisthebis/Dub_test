@@ -50,7 +50,7 @@ class Window {
 
     void showSierpinski()
     {
-        sierpinskiDo(bitmap, 729, 6);
+        bitmap.sierpinskiDo(729, 6); //free function taking reference to Bitmap
         text.update();
     }
 
