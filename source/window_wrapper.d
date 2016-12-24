@@ -33,18 +33,7 @@ class Window {
 
         //Creating texture...
         text.data = bitmap.pixels;
-        for (uint y = 0; y < HEIGHT; ++y)
-        {
-            for (uint x = 0; x < WIDTH; x++)
-            {
-                const uint i = x + WIDTH * y;
-                const ubyte alpha = 255;
-                const ubyte red = cast(ubyte) (x/3);
-                const ubyte green = cast(ubyte) (y/3);
-                const ubyte blue = 255;
-                bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
-            }
-        }
+        text.update();
 
     }
 
@@ -52,6 +41,13 @@ class Window {
     {
         bitmap.sierpinskiDo(729, 6); //free function taking reference to Bitmap
         text.update();
+    }
+    
+    ref Bitmap getBitmap() {
+        return bitmap;
+    }
+    ref Texture getTexture() {
+        return text;
     }
 
     ~this()

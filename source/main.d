@@ -1,6 +1,8 @@
 import std.stdio;
 import derelict.sdl2.sdl;
 import window_wrapper;
+import bitmap_drawing_utils;
+import color_utils;
 
 void main()
 {
@@ -37,6 +39,14 @@ void main()
 						break;
 				    case SDLK_e:
 						window.showSierpinski();
+						break;
+				    case SDLK_a:
+						window.getBitmap().drawRect(50, 50, 100, 100, getColorCode(255, 0, 0, 255), true);
+						window.getTexture().update();
+						break;
+				    case SDLK_b:
+						window.getBitmap().drawLine(50, 50, 20, 20, getColorCode(0, 255, 0, 255));
+						window.getTexture().update();
 						break;
 					case SDLK_ESCAPE:
 						leave = true;
