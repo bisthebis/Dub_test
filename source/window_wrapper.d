@@ -45,12 +45,13 @@ class Window {
                 bitmap.setColor(x, y, getColorCode(red, green, blue, alpha, SDL_PIXELFORMAT_RGBA8888));
             }
         }
-        sierpinskiDo(bitmap, 729, 6); 
-        //sierpinskiStep(bitmap, 243);
 
-        //Sending it to GPU
+    }
+
+    void showSierpinski()
+    {
+        sierpinskiDo(bitmap, 729, 6);
         text.update();
-
     }
 
     ~this()

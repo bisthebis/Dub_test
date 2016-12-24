@@ -35,6 +35,9 @@ void main()
 						break;
 					case SDLK_LEFT:
 						break;
+				    case SDLK_e:
+						window.showSierpinski();
+						break;
 					case SDLK_ESCAPE:
 						leave = true;
 						break;
