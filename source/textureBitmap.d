@@ -1,6 +1,6 @@
 import derelict.sdl2.sdl;
 
-class Texture {
+class TextureBitmap {
 
     private:
         SDL_Texture* text;

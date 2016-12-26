@@ -1,6 +1,6 @@
 import derelict.sdl2.sdl;
 import color_utils;
-import texture;
+import textureBitmap;
 import bitmap;
 import sierpinski_carpet;
 import std.stdio;
@@ -10,7 +10,7 @@ class Window {
     SDL_Window* window;
     SDL_Renderer* renderer;
     Bitmap bitmap;
-    Texture text;
+    TextureBitmap text;
 
     static const uint WIDTH = 729;
     static const uint HEIGHT = 729;
@@ -28,7 +28,7 @@ class Window {
         renderer = SDL_CreateRenderer(window, 
                                     -1, 
                                     SDL_RENDERER_ACCELERATED);
-        text = new Texture(renderer, WIDTH, HEIGHT);
+        text = new TextureBitmap(renderer, WIDTH, HEIGHT);
         bitmap = Bitmap (WIDTH, HEIGHT); //Since Bitmap is a struct, no "new" invocation is required.
 
         //Creating texture...
@@ -46,7 +46,7 @@ class Window {
     ref Bitmap getBitmap() {
         return bitmap;
     }
-    ref Texture getTexture() {
+    ref TextureBitmap getTexture() {
         return text;
     }
 
