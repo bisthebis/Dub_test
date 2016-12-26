@@ -39,4 +39,9 @@ class Texture {
             return text;
         }
 
+        /* Inactive yet : data is external (it's the one from "Bitmap")
+        invariant {
+            assert(data.length == width * height);
+        }*/
+
 }
