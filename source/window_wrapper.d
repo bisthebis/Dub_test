@@ -1,6 +1,7 @@
 import derelict.sdl2.sdl;
 import color_utils;
 import textureBitmap;
+import textureTarget;
 import bitmap;
 import sierpinski_carpet;
 import std.stdio;
